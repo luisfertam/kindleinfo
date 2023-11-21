@@ -1,22 +1,14 @@
+document.addEventListener('DOMContentLoaded', function () {
+    updateTime();
+    // Update the time every second
+    setInterval(updateTime, 1000);
+});
+
 function updateTime() {
-    var currentTimeElement = document.getElementById("currentTime");
-    var currentTime = new Date();
-    var hours = currentTime.getHours();
-    var minutes = currentTime.getMinutes();
-    var seconds = currentTime.getSeconds();
+    // Get the current time in GMT-5 timezone
+    const gmtMinus5 = new Date().toLocaleString('en-US', { timeZone: 'America/New_York' });
 
-    // Add leading zero if needed
-    minutes = minutes < 10 ? "0" + minutes : minutes;
-    seconds = seconds < 10 ? "0" + seconds : seconds;
-
-    var formattedTime = hours + ":" + minutes + ":" + seconds;
-    currentTimeElement.innerHTML = "Current Time: " + formattedTime;
+    // Display the time in the specified container
+    const timeContainer = document.getElementById('time-container');
+    timeContainer.textContent = 'Current Time (GMT-5): ' + gmtMinus5;
 }
-
-// Update the time every second
-setInterval(updateTime, 1000);
-
-// Initial call to display time immediately when the page loads
-updateTime();
-
-
