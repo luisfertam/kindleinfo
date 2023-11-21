@@ -1,19 +1,22 @@
-document.addEventListener("DOMContentLoaded", function() {
-    // Function to update the current time
-    function updateCurrentTime() {
-        // Get the current time
-        var currentTime = new Date();
-        
-        // Format the time as a string (you can customize the format as needed)
-        var formattedTime = currentTime.toLocaleTimeString();
+function updateTime() {
+    var currentTimeElement = document.getElementById("currentTime");
+    var currentTime = new Date();
+    var hours = currentTime.getHours();
+    var minutes = currentTime.getMinutes();
+    var seconds = currentTime.getSeconds();
 
-        // Update the content of the 'current-time' paragraph element
-        document.getElementById("current-time").textContent = formattedTime;
-    }
+    // Add leading zero if needed
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
 
-    // Call the updateCurrentTime function initially
-    updateCurrentTime();
+    var formattedTime = hours + ":" + minutes + ":" + seconds;
+    currentTimeElement.innerHTML = "Current Time: " + formattedTime;
+}
 
-    // Use setInterval to update the time every second (1000 milliseconds)
-    setInterval(updateCurrentTime, 1000);
-});
+// Update the time every second
+setInterval(updateTime, 1000);
+
+// Initial call to display time immediately when the page loads
+updateTime();
+
+
