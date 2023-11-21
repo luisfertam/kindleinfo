@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function updateTime() {
     // Get the current time in GMT-5 timezone
-    const gmtMinus5 = new Date().toLocaleString('en-US', { timeZone: 'America/New_York' });
+    const gmtMinus5 = new Date().toLocaleString('en-US', { timeZone: 'America/Bogota' });
 
     // Display the time in the specified container
     const timeContainer = document.getElementById('time-container');
